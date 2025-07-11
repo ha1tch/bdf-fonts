@@ -7,3 +7,7 @@ help you to get started with the font support in the API or the `text-util`
 from the utils/ directory.
 
 Tom-Thumb.bdf is included in this directory under [MIT license](http://vt100.tarunz.org/LICENSE). Tom-thumb.bdf was created by [@robey](http://twitter.com/robey) and originally published at https://robey.lag.net/2010/01/23/tiny-monospace-font.html
+
+Cozette.bdf is included in this fork under the MIT License, Copyright (c) 2020, Slavfox
+https://github.com/the-moonwitch/Cozette
+
