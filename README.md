@@ -5,7 +5,7 @@ https://github.com/IT-Studio-Rech/bdf-fonts
 
 Given that that particular project seems to be stalled or unatended, I decided to keep my own fork, adding fonts that are useful for my projects, and hopefully for others as well.
 
-I'm keeping below the notices of the original repo, and adding my own below:
+I'm keeping the notices of the original repo, and adding my own below:
 
 ---
 
