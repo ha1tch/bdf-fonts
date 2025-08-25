@@ -1,4 +1,6 @@
-This is a fork of the original compilation by IT Studio Rech
+# bdf-fonts
+
+** This was started as a fork of the original compilation by IT Studio Rech**
 https://github.com/IT-Studio-Rech/bdf-fonts
 
 Given that that particular project seems to be stalled or unatended, I decided to keep my own fork, adding fonts that are useful for my projects, and hopefully for others as well.
