@@ -15,6 +15,15 @@ very low resolution screens such as the LED displays.
 
 ---
 ### Most fonts in this directory are public domain, except for the following exceptions, they each have their own licensing terms:
+| Font | License |
+|------|---------|
+| tom-thumb.bdf | MIT |
+| cozette.bdf | MIT |
+| sinclair.bdf | Amstrad copyright |
+| tahoma-*.bdf | LGPL 2.1 |
+| All others | Public Domain |
+
+# Not in the Public Domain:
 
 Tom-Thumb.bdf is included in this directory under [MIT license](http://vt100.tarunz.org/LICENSE). Tom-thumb.bdf was created by [@robey](http://twitter.com/robey) and originally published at https://robey.lag.net/2010/01/23/tiny-monospace-font.html
 
