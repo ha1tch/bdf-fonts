@@ -1,4 +1,4 @@
-# BDF Font Catalog
+# BDF Font Catalogue
 
 A collection of 56 bitmap fonts in BDF format.
 
@@ -18,7 +18,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 951.8 KB |
 | Characters | 5205 |
 | Size | 20px / 20pt / 10x20 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -38,7 +39,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 92.1 KB |
 | Characters | 919 |
 | Size | 6px / 6pt / 4x6 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -58,7 +60,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 190.2 KB |
 | Characters | 1848 |
 | Size | 7px / 7pt / 5x7 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -78,7 +81,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 151.3 KB |
 | Characters | 1426 |
 | Size | 8px / 11pt / 5x8 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -98,7 +102,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 206.1 KB |
 | Characters | 1824 |
 | Size | 10px / 10pt / 6x10 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain terminal emulator font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -118,7 +123,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 536.8 KB |
 | Characters | 4531 |
 | Size | 12px / 12pt / 6x12 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain terminal emulator font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -138,7 +144,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 500.1 KB |
 | Characters | 4121 |
 | Size | 13px / 12pt / 6x13 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -158,7 +165,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 155.7 KB |
 | Characters | 1282 |
 | Size | 13px / 13pt / 6x13 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Bold |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -178,7 +186,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 93.6 KB |
 | Characters | 770 |
 | Size | 13px / 12pt / 6x13 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium Oblique |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -198,7 +207,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 141.4 KB |
 | Characters | 1296 |
 | Size | 9px / 9pt / 6x9 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -218,7 +228,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 391.4 KB |
 | Characters | 3226 |
 | Size | 13px / 13pt / 7x13 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -238,7 +249,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 121.8 KB |
 | Characters | 1003 |
 | Size | 13px / 13pt / 7x13 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Bold |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -258,7 +270,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 101.0 KB |
 | Characters | 831 |
 | Size | 13px / 13pt / 7x13 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium Oblique |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -278,7 +291,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 320.2 KB |
 | Characters | 2576 |
 | Size | 14px / 7pt / 7x14 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -298,7 +312,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 125.5 KB |
 | Characters | 1009 |
 | Size | 14px / 7pt / 7x14 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Bold |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -318,7 +333,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 449.2 KB |
 | Characters | 3703 |
 | Size | 13px / 13pt / 8x13 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -338,7 +354,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 138.4 KB |
 | Characters | 1141 |
 | Size | 13px / 13pt / 8x13 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Bold |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -358,7 +375,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 156.8 KB |
 | Characters | 1295 |
 | Size | 13px / 13pt / 8x13 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium Oblique |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -378,7 +396,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 747.7 KB |
 | Characters | 4777 |
 | Size | 15px / 15pt / 9x15 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -398,7 +417,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 264.3 KB |
 | Characters | 1688 |
 | Size | 15px / 11pt / 9x15 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Bold |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -418,7 +438,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 815.4 KB |
 | Characters | 4766 |
 | Size | 18px / 12pt / 9x18 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -438,7 +459,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 130.6 KB |
 | Characters | 762 |
 | Size | 18px / 12pt / 9x18 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Bold |
 | Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
@@ -458,7 +480,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 142.5 KB |
 | Characters | 1194 |
 | Size | 12px / 12pt / 6x12 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Copyright 1989 Dale Schumacher, 1999 Robert Brady. |
 | Character Set | ISO10646-1 |
 
@@ -478,7 +501,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 657.7 KB |
 | Characters | 5983 |
 | Size | 13px / 12pt / 14x15 |
-| Spacing | M |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | (c) 2020-2025 Slavfox |
 | Character Set | ISO10646-1 |
 
@@ -498,7 +522,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 83.5 KB |
 | Characters | 830 |
 | Size | 16px / 12pt / 7x12 |
-| Spacing | M |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Copyright romeovs 2013 |
 | Character Set | ISO10646-1 |
 
@@ -518,7 +543,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 22.8 KB |
 | Characters | 199 |
 | Size | 11px / 11pt / 6x11 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Character Set | iso8859-2 |
 
 ---
@@ -537,7 +563,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 24.0 KB |
 | Characters | 199 |
 | Size | 12px / 11pt / 7x13 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Character Set | iso8859-2 |
 
 ---
@@ -556,7 +583,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 24.6 KB |
 | Characters | 199 |
 | Size | 12px / 12pt / 8x14 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Character Set | iso8859-2 |
 
 ---
@@ -575,7 +603,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 30.9 KB |
 | Characters | 199 |
 | Size | 12px / 13pt / 9x15 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Character Set | iso8859-2 |
 
 ---
@@ -594,6 +623,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 22.2 KB |
 | Characters | 199 |
 | Size | 15pt / 8x17 |
+| Spacing | Monospace |
+| Weight/Style | Normal |
 | Character Set | iso8859-2 |
 
 ---
@@ -612,7 +643,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 23.0 KB |
 | Characters | 199 |
 | Size | 16px / 13pt / 9x21 |
-| Spacing | M |
+| Spacing | Monospace |
+| Weight/Style | Normal |
 | Character Set | iso8859-2 |
 
 ---
@@ -631,7 +663,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 23.5 KB |
 | Characters | 199 |
 | Size | 18px / 13pt / 9x21 |
-| Spacing | M |
+| Spacing | Monospace |
+| Weight/Style | Normal |
 | Character Set | iso8859-2 |
 
 ---
@@ -650,7 +683,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 229.1 KB |
 | Characters | 2000 |
 | Size | 12px / 12pt / 14x15 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Medium |
 | Copyright | Copyright (c) 1984, 1987 Adobe Systems Incorporated. All Rights Reserved. Copyright (c) 1988, 1991 Digital Equipment Corporation. All Rights Reserved. |
 | Character Set | ISO10646-1 |
 
@@ -670,7 +704,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 229.1 KB |
 | Characters | 2000 |
 | Size | 12px / 12pt / 14x15 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Medium |
 | Copyright | Copyright (c) 1984, 1987 Adobe Systems Incorporated. All Rights Reserved. Copyright (c) 1988, 1991 Digital Equipment Corporation. All Rights Reserved. |
 | Character Set | ISO10646-1 |
 
@@ -690,7 +725,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 492.4 KB |
 | Characters | 2743 |
 | Size | 20px / 20pt / 9x20 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Konstantin Bytensky |
 | Character Set | ISO10646-1 |
 
@@ -710,7 +746,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 92.1 KB |
 | Characters | 527 |
 | Size | 66px / 66pt / 178x68 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Medium |
 | Copyright | Created by Mathieu Gabiot with FontForge 2.0 (http://fontforge.sf.net) - Brussels - 2009 |
 | Character Set | ISO10646-1 |
 
@@ -730,7 +767,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 39.9 KB |
 | Characters | 192 |
 | Size | 20px / 20pt / 10x20 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Zevv |
 | Character Set | ISO8859-15 |
 
@@ -750,7 +788,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 24.5 KB |
 | Characters | 199 |
 | Size | 12px / 12pt / 8x14 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Character Set | iso8859-2 |
 
 ---
@@ -769,7 +808,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 109.5 KB |
 | Characters | 1070 |
 | Size | 11px / 11pt / 5x12 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 | Copyright | Copyright (c) 2016, romeovs |
 | Character Set | ISO10646-1 |
 
@@ -789,7 +829,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 99.2 KB |
 | Characters | 973 |
 | Size | 11px / 11pt / 5x12 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Bold |
 | Copyright | Copyright (c) 2016, romeovs |
 | Character Set | ISO10646-1 |
 
@@ -809,7 +850,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 109.5 KB |
 | Characters | 1070 |
 | Size | 11px / 11pt / 5x12 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Medium Italic |
 | Copyright | Copyright (c) 2016, romeovs |
 | Character Set | ISO10646-1 |
 
@@ -829,6 +871,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 10.1 KB |
 | Characters | 96 |
 | Size | 8px / 8pt / 8x8 |
+| Spacing | Monospace |
+| Weight/Style | Medium |
 
 ---
 
@@ -846,7 +890,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 42.2 KB |
 | Characters | 192 |
 | Size | 24px / 24pt / 12x24 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Normal |
 | Copyright | Copyright (c) 2018-2019, Frederic Cambus |
 | Character Set | ISO10646-1 |
 
@@ -866,7 +911,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 49.7 KB |
 | Characters | 192 |
 | Size | 32px / 32pt / 16x32 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Normal |
 | Copyright | Copyright (c) 2018-2019, Frederic Cambus |
 | Character Set | ISO10646-1 |
 
@@ -886,7 +932,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 127.9 KB |
 | Characters | 192 |
 | Size | 64px / 64pt / 32x64 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Normal |
 | Copyright | Copyright (c) 2018-2019, Frederic Cambus |
 | Character Set | ISO10646-1 |
 
@@ -906,7 +953,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 23.6 KB |
 | Characters | 192 |
 | Size | 8px / 8pt / 5x8 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Normal |
 | Copyright | Copyright (c) 2018-2019, Frederic Cambus |
 | Character Set | ISO10646-1 |
 
@@ -926,7 +974,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 28.3 KB |
 | Characters | 192 |
 | Size | 16px / 16pt / 8x16 |
-| Spacing | C |
+| Spacing | Monospace |
+| Weight/Style | Normal |
 | Copyright | Copyright (c) 2018-2019, Frederic Cambus |
 | Character Set | ISO10646-1 |
 
@@ -946,7 +995,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 47.1 KB |
 | Characters | 450 |
 | Size | 10px / 10pt / 14x12 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Normal |
 | Copyright | Copyright (c) 2004 Larry Snyder, Based on Bitstream Vera Sans Copyright (c) 2003 by Bitstream, Inc. Font renamed in accordance with former's license. Please do not contact Bitstream Inc. for any reason regarding this font. |
 | Character Set | ISO10646-1 |
 
@@ -966,7 +1016,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 47.9 KB |
 | Characters | 448 |
 | Size | 11px / 8pt / 16x14 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Medium |
 | Character Set | ISO10646-1 |
 
 ---
@@ -985,7 +1036,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 38.2 KB |
 | Characters | 348 |
 | Size | 12px / 9pt / 17x15 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Medium |
 | Character Set | ISO10646-1 |
 
 ---
@@ -1004,7 +1056,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 38.5 KB |
 | Characters | 348 |
 | Size | 13px / 10pt / 17x16 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Medium |
 | Character Set | ISO10646-1 |
 
 ---
@@ -1023,7 +1076,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 41.7 KB |
 | Characters | 348 |
 | Size | 15px / 11pt / 21x18 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Medium |
 | Character Set | ISO10646-1 |
 
 ---
@@ -1042,7 +1096,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 43.5 KB |
 | Characters | 348 |
 | Size | 16px / 12pt / 22x20 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Medium |
 | Character Set | ISO10646-1 |
 
 ---
@@ -1061,7 +1116,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 45.5 KB |
 | Characters | 450 |
 | Size | 8px / 8pt / 11x10 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Normal |
 | Copyright | Copyright (c) 2004 Larry Snyder, Based on Bitstream Vera Sans Copyright (c) 2003 by Bitstream, Inc. Font renamed in accordance with former's license. Please do not contact Bitstream Inc. for any reason regarding this font. |
 | Character Set | ISO10646-1 |
 
@@ -1081,7 +1137,8 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 46.5 KB |
 | Characters | 450 |
 | Size | 9px / 9pt / 13x11 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Normal |
 | Copyright | Copyright (c) 2004 Larry Snyder, Based on Bitstream Vera Sans Copyright (c) 2003 by Bitstream, Inc. Font renamed in accordance with former's license. Please do not contact Bitstream Inc. for any reason regarding this font. |
 | Character Set | ISO10646-1 |
 
@@ -1101,11 +1158,12 @@ A collection of 56 bitmap fonts in BDF format.
 | File Size | 19.5 KB |
 | Characters | 203 |
 | Size | 6px / 6pt / 3x6 |
-| Spacing | P |
+| Spacing | Proportional |
+| Weight/Style | Medium |
 | Copyright | MIT |
 | Character Set | ISO10646-1 |
 
 ---
 
 
-*Generated on 2025-08-25 21:03:01*
+*Generated on 2025-08-25 22:20:06*

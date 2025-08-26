@@ -20,6 +20,8 @@ class BDFFontInfo:
             with open(self.file_path, 'r', encoding='utf-8', errors='ignore') as f:
                 lines = f.readlines()
             
+            char_widths = []  # Track character widths for monospace detection
+            
             # Extract key metadata fields
             for line in lines:
                 line = line.strip()
@@ -68,9 +70,76 @@ class BDFFontInfo:
                     self.metadata['charset_registry'] = line[17:].strip(' "')
                 elif line.startswith('CHARSET_ENCODING '):
                     self.metadata['charset_encoding'] = line[17:].strip(' "')
-        
+                elif line.startswith('DWIDTH '):
+                    # Collect character widths for monospace detection
+                    parts = line.split()
+                    if len(parts) >= 2:
+                        char_widths.append(int(parts[1]))
+            
+            # Analyze character widths for monospace detection
+            if char_widths:
+                unique_widths = set(char_widths)
+                self.metadata['detected_monospace'] = len(unique_widths) == 1
+                self.metadata['char_widths_analyzed'] = len(char_widths)
+            
         except Exception as e:
             print(f"Warning: Could not read metadata from {self.filename}: {e}")
+    
+    def get_spacing_type(self):
+        """Determine if font is monospaced or proportional"""
+        # First check explicit SPACING field
+        if 'spacing' in self.metadata:
+            spacing = self.metadata['spacing'].upper()
+            if spacing in ['M', 'C']:  # M = Monospace, C = Character cell (also monospace)
+                return "Monospace"
+            elif spacing == 'P':
+                return "Proportional"
+        
+        # Fallback to character width analysis
+        if 'detected_monospace' in self.metadata:
+            if self.metadata['detected_monospace']:
+                return "Monospace"
+            else:
+                return "Proportional"
+        
+        return "Unknown"
+    
+    def get_weight_style(self):
+        """Determine font weight and style (normal/bold/italic)"""
+        weight_parts = []
+        
+        # Check WEIGHT_NAME field
+        if 'weight_name' in self.metadata:
+            weight = self.metadata['weight_name'].lower()
+            if 'bold' in weight or weight in ['bold', 'black', 'heavy']:
+                weight_parts.append("Bold")
+            elif 'light' in weight or weight in ['light', 'thin']:
+                weight_parts.append("Light")
+            elif weight in ['medium', 'regular', 'normal']:
+                weight_parts.append("Medium")
+        
+        # Check SLANT field
+        if 'slant' in self.metadata:
+            slant = self.metadata['slant'].upper()
+            if slant == 'I':
+                weight_parts.append("Italic")
+            elif slant == 'O':
+                weight_parts.append("Oblique")
+            # 'R' = Roman (normal) - don't add anything
+        
+        # Fallback: analyze font name for style indicators
+        if not weight_parts and 'font_name' in self.metadata:
+            font_name = self.metadata['font_name'].lower()
+            if 'bold' in font_name:
+                weight_parts.append("Bold")
+            if 'italic' in font_name or 'oblique' in font_name:
+                weight_parts.append("Italic")
+        
+        # Default to Normal if nothing detected
+        if not weight_parts:
+            weight_parts.append("Normal")
+        
+        return " ".join(weight_parts)
     
     def get_display_name(self):
         """Get a human-readable font name"""
@@ -107,15 +176,15 @@ class BDFFontInfo:
             size /= 1024.0
         return f"{size:.1f} GB"
 
-def generate_html_catalog(fonts, output_file="font_catalog.html"):
-    """Generate HTML catalog of all fonts"""
+def generate_html_catalogue(fonts, output_file="font_catalogue.html"):
+    """Generate HTML catalogue of all fonts"""
     
     html_content = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BDF Font Catalog</title>
+    <title>BDF Font Catalogue</title>
     <style>
         body {{
             font-family: Arial, sans-serif;
@@ -210,7 +279,7 @@ def generate_html_catalog(fonts, output_file="font_catalog.html"):
 </head>
 <body>
     <div class="container">
-        <h1>BDF Font Catalog</h1>
+        <h1>BDF Font Catalogue</h1>
         <p>A collection of {len(fonts)} bitmap fonts in BDF format.</p>
         
         <div class="font-grid">
@@ -243,9 +312,9 @@ def generate_html_catalog(fonts, output_file="font_catalog.html"):
         html_content += f'                    <tr><th>File Size</th><td>{font.format_file_size()}</td></tr>\n'
         html_content += f'                    <tr><th>Characters</th><td>{font.char_count}</td></tr>\n'
         html_content += f'                    <tr><th>Size</th><td>{font.get_size_description()}</td></tr>\n'
+        html_content += f'                    <tr><th>Spacing</th><td>{font.get_spacing_type()}</td></tr>\n'
+        html_content += f'                    <tr><th>Weight/Style</th><td>{font.get_weight_style()}</td></tr>\n'
         
-        if 'spacing' in font.metadata:
-            html_content += f'                    <tr><th>Spacing</th><td>{font.metadata["spacing"]}</td></tr>\n'
         if 'copyright' in font.metadata:
             html_content += f'                    <tr><th>Copyright</th><td>{font.metadata["copyright"]}</td></tr>\n'
         if 'charset_registry' in font.metadata and 'charset_encoding' in font.metadata:
@@ -270,12 +339,12 @@ def generate_html_catalog(fonts, output_file="font_catalog.html"):
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
-    print(f"HTML catalog saved to {output_file}")
+    print(f"HTML catalogue saved to {output_file}")
 
-def generate_markdown_catalog(fonts, output_file="font_catalog.md"):
-    """Generate Markdown catalog of all fonts"""
+def generate_markdown_catalogue(fonts, output_file="font_catalogue.md"):
+    """Generate Markdown catalogue of all fonts"""
     
-    md_content = f"""# BDF Font Catalog
+    md_content = f"""# BDF Font Catalogue
 
 A collection of {len(fonts)} bitmap fonts in BDF format.
 
@@ -306,9 +375,9 @@ A collection of {len(fonts)} bitmap fonts in BDF format.
         md_content += f"| File Size | {font.format_file_size()} |\n"
         md_content += f"| Characters | {font.char_count} |\n"
         md_content += f"| Size | {font.get_size_description()} |\n"
+        md_content += f"| Spacing | {font.get_spacing_type()} |\n"
+        md_content += f"| Weight/Style | {font.get_weight_style()} |\n"
         
-        if 'spacing' in font.metadata:
-            md_content += f"| Spacing | {font.metadata['spacing']} |\n"
         if 'copyright' in font.metadata:
             md_content += f"| Copyright | {font.metadata['copyright']} |\n"
         if 'charset_registry' in font.metadata and 'charset_encoding' in font.metadata:
@@ -322,13 +391,13 @@ A collection of {len(fonts)} bitmap fonts in BDF format.
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(md_content)
     
-    print(f"Markdown catalog saved to {output_file}")
+    print(f"Markdown catalogue saved to {output_file}")
 
 def main():
-    parser = argparse.ArgumentParser(description='Generate HTML and Markdown catalogs for BDF fonts')
-    parser.add_argument('--html-only', action='store_true', help='Generate only HTML catalog')
-    parser.add_argument('--md-only', action='store_true', help='Generate only Markdown catalog')
-    parser.add_argument('--output-dir', default='.', help='Output directory for catalog files')
+    parser = argparse.ArgumentParser(description='Generate HTML and Markdown catalogues for BDF fonts')
+    parser.add_argument('--html-only', action='store_true', help='Generate only HTML catalogue')
+    parser.add_argument('--md-only', action='store_true', help='Generate only Markdown catalogue')
+    parser.add_argument('--output-dir', default='.', help='Output directory for catalogue files')
     
     args = parser.parse_args()
     
@@ -351,18 +420,18 @@ def main():
     # Sort fonts by filename for consistent output
     fonts.sort(key=lambda x: x.filename.lower())
     
-    # Generate catalogs
+    # Generate catalogues
     os.makedirs(args.output_dir, exist_ok=True)
     
     if not args.md_only:
-        html_output = os.path.join(args.output_dir, "font_catalog.html")
-        generate_html_catalog(fonts, html_output)
+        html_output = os.path.join(args.output_dir, "font_catalogue.html")
+        generate_html_catalogue(fonts, html_output)
     
     if not args.html_only:
-        md_output = os.path.join(args.output_dir, "font_catalog.md")
-        generate_markdown_catalog(fonts, md_output)
+        md_output = os.path.join(args.output_dir, "font_catalogue.md")
+        generate_markdown_catalogue(fonts, md_output)
     
-    print("\nCatalog generation complete!")
+    print("\nCatalogue generation complete!")
     return True
 
 if __name__ == '__main__':
