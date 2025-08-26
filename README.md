@@ -13,6 +13,12 @@ These are BDF fonts, a simple bitmap font-format that can be created
 by many font tools. Given that these are bitmap fonts, they will look good on
 very low resolution screens such as the LED displays.
 
+Here's a font catalogue with previews:
+https://github.com/ha1tch/bdf-fonts/blob/main/font_catalogue.md
+
+Here's the python generation scripts I used:
+https://github.com/ha1tch/bdf-fonts/tree/main/tools
+
 ---
 ### Most fonts in this directory are public domain, except for the following exceptions, they each have their own licensing terms:
 | Font | License |
