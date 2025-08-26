@@ -3,6 +3,7 @@ import sys
 import os
 import glob
 import argparse
+import json
 from datetime import datetime
 
 class BDFFontInfo:
@@ -656,10 +657,75 @@ A collection of {len(fonts)} bitmap fonts in BDF format.
     
     print(f"Markdown catalogue saved to {output_file}")
 
+def generate_json_catalogue(fonts, output_file="font_catalogue.json"):
+    """Generate JSON catalogue of all fonts for programmatic access"""
+    
+    catalogue_data = {
+        "generated": datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
+        "repository": "ha1tch/bdf-fonts",
+        "total_fonts": len(fonts),
+        "fonts": []
+    }
+    
+    for font in fonts:
+        # Generate URLs
+        font_filename = os.path.basename(font.file_path)
+        if font.file_path.startswith("fonts/"):
+            download_url = f"https://raw.githubusercontent.com/ha1tch/bdf-fonts/refs/heads/main/fonts/{font_filename}"
+        else:
+            download_url = f"https://raw.githubusercontent.com/ha1tch/bdf-fonts/refs/heads/main/{font_filename}"
+        
+        preview_url = f"https://raw.githubusercontent.com/ha1tch/bdf-fonts/refs/heads/main/previews/{font.filename}.png"
+        
+        # Build font data object
+        font_data = {
+            "filename": font.filename,
+            "display_name": font.filename.replace('.bdf', ''),
+            "full_font_name": font.metadata.get('font_name', ''),
+            "file_size": font.file_size,
+            "file_size_formatted": font.format_file_size(),
+            "character_count": font.char_count,
+            "spacing_type": font.get_spacing_type(),
+            "weight_style": font.get_weight_style(),
+            "is_monospace": font.get_spacing_type() == "Monospace",
+            "is_bold": "Bold" in font.get_weight_style(),
+            "is_italic": "Italic" in font.get_weight_style() or "Oblique" in font.get_weight_style(),
+            "size_description": font.get_size_description(),
+            "download_url": download_url,
+            "preview_url": preview_url,
+            "anchor_id": font.filename.replace('.bdf', '').lower().replace(' ', '-').replace('_', '-'),
+            "metadata": {
+                "family_name": font.metadata.get('family_name', ''),
+                "weight_name": font.metadata.get('weight_name', ''),
+                "slant": font.metadata.get('slant', ''),
+                "spacing": font.metadata.get('spacing', ''),
+                "pixel_size": font.metadata.get('pixel_size', ''),
+                "point_size": font.metadata.get('point_size', ''),
+                "bbox_width": font.metadata.get('bbox_width', ''),
+                "bbox_height": font.metadata.get('bbox_height', ''),
+                "bbox_x_offset": font.metadata.get('bbox_x_offset', ''),
+                "bbox_y_offset": font.metadata.get('bbox_y_offset', ''),
+                "average_width": font.metadata.get('average_width', ''),
+                "copyright": font.metadata.get('copyright', ''),
+                "charset_registry": font.metadata.get('charset_registry', ''),
+                "charset_encoding": font.metadata.get('charset_encoding', ''),
+                "resolution_x": font.metadata.get('resolution_x', ''),
+                "resolution_y": font.metadata.get('resolution_y', '')
+            }
+        }
+        
+        catalogue_data["fonts"].append(font_data)
+    
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(catalogue_data, f, indent=2, ensure_ascii=False)
+    
+    print(f"JSON catalogue saved to {output_file}")
+
 def main():
-    parser = argparse.ArgumentParser(description='Generate HTML and Markdown catalogues for BDF fonts')
+    parser = argparse.ArgumentParser(description='Generate HTML, Markdown, and JSON catalogues for BDF fonts')
     parser.add_argument('--html-only', action='store_true', help='Generate only HTML catalogue')
     parser.add_argument('--md-only', action='store_true', help='Generate only Markdown catalogue')
+    parser.add_argument('--json-only', action='store_true', help='Generate only JSON catalogue')
     parser.add_argument('--output-dir', default='.', help='Output directory for catalogue files')
     
     args = parser.parse_args()
@@ -686,13 +752,17 @@ def main():
     # Generate catalogues
     os.makedirs(args.output_dir, exist_ok=True)
     
-    if not args.md_only:
+    if not (args.md_only or args.json_only):
         html_output = os.path.join(args.output_dir, "font_catalogue.html")
         generate_html_catalogue(fonts, html_output)
     
-    if not args.html_only:
+    if not (args.html_only or args.json_only):
         md_output = os.path.join(args.output_dir, "font_catalogue.md")
         generate_markdown_catalogue(fonts, md_output)
+    
+    if not (args.html_only or args.md_only):
+        json_output = os.path.join(args.output_dir, "font_catalogue.json")
+        generate_json_catalogue(fonts, json_output)
     
     print("\nCatalogue generation complete!")
     return True
