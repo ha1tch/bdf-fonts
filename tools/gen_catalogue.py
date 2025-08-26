@@ -176,7 +176,7 @@ class BDFFontInfo:
             size /= 1024.0
         return f"{size:.1f} GB"
 
-def generate_html_catalogue(fonts, output_file="font_catalogue.html", github_repo=None, github_branch="main"):
+def generate_html_catalogue(fonts, output_file="font_catalogue.html"):
     """Generate HTML catalogue of all fonts"""
     
     html_content = f"""<!DOCTYPE html>
@@ -428,17 +428,12 @@ def generate_html_catalogue(fonts, output_file="font_catalogue.html", github_rep
             charset = f'{font.metadata["charset_registry"]}-{font.metadata["charset_encoding"]}'
             html_content += f'                    <tr><th>Character Set</th><td>{charset}</td></tr>\n'
         
-        # Generate download URL
-        if github_repo:
-            # Extract just the filename from full path for the URL
-            font_filename = os.path.basename(font.file_path)
-            # Check if fonts are in fonts/ subfolder
-            if font.file_path.startswith("fonts/"):
-                download_url = f"https://raw.githubusercontent.com/{github_repo}/refs/heads/{github_branch}/fonts/{font_filename}"
-            else:
-                download_url = f"https://raw.githubusercontent.com/{github_repo}/refs/heads/{github_branch}/{font_filename}"
+        # Generate download URL for ha1tch/bdf-fonts repository
+        font_filename = os.path.basename(font.file_path)
+        if font.file_path.startswith("fonts/"):
+            download_url = f"https://raw.githubusercontent.com/ha1tch/bdf-fonts/refs/heads/main/fonts/{font_filename}"
         else:
-            download_url = font.filename
+            download_url = f"https://raw.githubusercontent.com/ha1tch/bdf-fonts/refs/heads/main/{font_filename}"
         
         html_content += f"""                </table>
                 
@@ -666,8 +661,6 @@ def main():
     parser.add_argument('--html-only', action='store_true', help='Generate only HTML catalogue')
     parser.add_argument('--md-only', action='store_true', help='Generate only Markdown catalogue')
     parser.add_argument('--output-dir', default='.', help='Output directory for catalogue files')
-    parser.add_argument('--github-repo', help='GitHub repository (username/repo-name) for download links')
-    parser.add_argument('--github-branch', default='main', help='GitHub branch name (default: main)')
     
     args = parser.parse_args()
     
@@ -695,7 +688,7 @@ def main():
     
     if not args.md_only:
         html_output = os.path.join(args.output_dir, "font_catalogue.html")
-        generate_html_catalogue(fonts, html_output, args.github_repo, args.github_branch)
+        generate_html_catalogue(fonts, html_output)
     
     if not args.html_only:
         md_output = os.path.join(args.output_dir, "font_catalogue.md")
