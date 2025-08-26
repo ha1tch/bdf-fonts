@@ -7,28 +7,38 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 40px;
-            background-color: #f5f5f5;
+            margin: 0;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
         }
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background-color: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         h1 {
-            color: #333;
-            border-bottom: 3px solid #007acc;
-            padding-bottom: 10px;
+            color: #4a5568;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-align: center;
         }
         .filters {
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
             padding: 20px;
-            border-radius: 8px;
+            border-radius: 15px;
             margin: 20px 0;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(118, 75, 162, 0.2);
+            backdrop-filter: blur(5px);
         }
         .filter-row {
             display: flex;
@@ -44,28 +54,37 @@
         }
         .filter-group label {
             font-weight: bold;
-            color: #333;
+            color: #4a5568;
         }
         .filter-group input, .filter-group select {
             padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .filter-group input:focus, .filter-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
         }
         .clear-filters {
-            background-color: #007acc;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             border: none;
             padding: 8px 16px;
-            border-radius: 4px;
+            border-radius: 8px;
             cursor: pointer;
+            font-weight: 500;
+            transition: transform 0.2s;
         }
         .clear-filters:hover {
-            background-color: #005c99;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
         }
         .results-info {
             margin: 10px 0;
             font-weight: bold;
-            color: #666;
+            color: #4a5568;
         }
         .font-grid {
             display: grid;
@@ -74,10 +93,16 @@
             margin-top: 30px;
         }
         .font-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(118, 75, 162, 0.2);
+            border-radius: 16px;
             padding: 20px;
-            background-color: #fafafa;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .font-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
         }
         .font-card.hidden {
             display: none;
@@ -85,7 +110,7 @@
         .font-name {
             font-size: 1.4em;
             font-weight: bold;
-            color: #333;
+            color: #4a5568;
             margin-bottom: 5px;
             display: flex;
             align-items: center;
@@ -93,7 +118,7 @@
         }
         .anchor-link {
             font-size: 0.7em;
-            color: #007acc;
+            color: #667eea;
             text-decoration: none;
             opacity: 0.7;
             transition: opacity 0.2s;
@@ -103,10 +128,13 @@
         }
         .font-descriptor {
             font-size: 0.8em;
-            color: #666;
+            color: #6b7280;
             font-family: monospace;
             margin-bottom: 10px;
             word-break: break-all;
+            background: rgba(102, 126, 234, 0.05);
+            padding: 5px 8px;
+            border-radius: 6px;
         }
         .font-preview {
             text-align: center;
@@ -114,44 +142,59 @@
         }
         .font-preview img {
             max-width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            border: 1px solid rgba(118, 75, 162, 0.2);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .metadata-table {
             width: 100%;
             border-collapse: collapse;
             margin: 15px 0;
             font-size: 0.9em;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
         .metadata-table th,
         .metadata-table td {
-            padding: 8px;
+            padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid rgba(118, 75, 162, 0.1);
         }
         .metadata-table th {
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(240, 147, 251, 0.1));
             font-weight: bold;
             width: 40%;
+            color: #4a5568;
+        }
+        .metadata-table td {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .metadata-table tr:last-child th,
+        .metadata-table tr:last-child td {
+            border-bottom: none;
         }
         .download-link {
             display: inline-block;
-            background-color: #007acc;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 20px;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 8px;
             margin-top: 10px;
+            font-weight: 500;
+            transition: transform 0.2s;
         }
         .download-link:hover {
-            background-color: #005c99;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(240, 147, 251, 0.4);
         }
         .generated-info {
-            color: #666;
+            color: #6b7280;
             font-size: 0.9em;
             text-align: center;
             margin-top: 40px;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid rgba(118, 75, 162, 0.2);
             padding-top: 20px;
         }
     </style>
@@ -1916,7 +1959,7 @@
         </div>
         
         <div class="generated-info">
-            Generated on 2025-08-26 00:31:10
+            Generated on 2025-08-26 00:59:36
         </div>
     </div>
 
