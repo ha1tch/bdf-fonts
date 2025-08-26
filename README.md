@@ -14,7 +14,8 @@ by many font tools. Given that these are bitmap fonts, they will look good on
 very low resolution screens such as the LED displays.
 
 Here's a font catalogue with previews:
-https://github.com/ha1tch/bdf-fonts/blob/main/font_catalogue.md
+https://ha1tch.github.io/bdf-fonts/font_catalogue.html
+
 
 Here's the python generation scripts I used:
 https://github.com/ha1tch/bdf-fonts/tree/main/tools
