@@ -434,9 +434,9 @@ def generate_html_catalogue(fonts, output_file="font_catalogue.html", github_rep
             font_filename = os.path.basename(font.file_path)
             # Check if fonts are in fonts/ subfolder
             if font.file_path.startswith("fonts/"):
-                download_url = f"https://raw.githubusercontent.com/{github_repo}/{github_branch}/fonts/{font_filename}"
+                download_url = f"https://raw.githubusercontent.com/{github_repo}/refs/heads/{github_branch}/fonts/{font_filename}"
             else:
-                download_url = f"https://raw.githubusercontent.com/{github_repo}/{github_branch}/{font_filename}"
+                download_url = f"https://raw.githubusercontent.com/{github_repo}/refs/heads/{github_branch}/{font_filename}"
         else:
             download_url = font.filename
         
