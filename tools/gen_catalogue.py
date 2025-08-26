@@ -268,6 +268,19 @@ def generate_html_catalogue(fonts, output_file="font_catalogue.html", github_rep
             font-weight: bold;
             color: #333;
             margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }}
+        .anchor-link {{
+            font-size: 0.7em;
+            color: #007acc;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }}
+        .anchor-link:hover {{
+            opacity: 1;
         }}
         .font-descriptor {{
             font-size: 0.8em;
@@ -371,14 +384,21 @@ def generate_html_catalogue(fonts, output_file="font_catalogue.html", github_rep
         is_bold = "Bold" in weight_style
         is_italic = "Italic" in weight_style or "Oblique" in weight_style
         
+        # Generate a safe ID for anchoring
+        font_id = font.filename.replace('.bdf', '').lower().replace(' ', '-').replace('_', '-')
+        
         html_content += f"""
             <div class="font-card" 
+                 id="{font_id}"
                  data-filename="{font.filename.lower()}" 
                  data-fontname="{font.get_display_name().lower()}" 
                  data-spacing="{spacing_type}" 
                  data-bold="{str(is_bold).lower()}" 
                  data-italic="{str(is_italic).lower()}">
-                <div class="font-name">{font.filename.replace('.bdf', '')}</div>
+                <div class="font-name">
+                    {font.filename.replace('.bdf', '')}
+                    <a href="#{font_id}" class="anchor-link" onclick="copyAnchorLink('{font_id}')" title="Copy link to this font">🔗</a>
+                </div>
                 <div class="font-descriptor">{font.metadata.get('font_name', 'No descriptor available')}</div>
                 
                 <div class="font-preview">
@@ -497,6 +517,70 @@ def generate_html_catalogue(fonts, output_file="font_catalogue.html", github_rep
             applyFilters();
         }}
         
+        function copyAnchorLink(fontId) {{
+            const url = window.location.origin + window.location.pathname + '#' + fontId;
+            
+            // Update the URL without scrolling
+            window.history.replaceState(null, null, '#' + fontId);
+            
+            // Try to copy to clipboard
+            if (navigator.clipboard && navigator.clipboard.writeText) {{
+                navigator.clipboard.writeText(url).then(() => {{
+                    // Visual feedback could be added here
+                }}).catch(() => {{
+                    // Fallback handled below
+                }});
+            }}
+            
+            // Scroll to the font smoothly
+            document.getElementById(fontId).scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+            
+            return false; // Prevent default anchor behavior
+        }}
+        
+        function handleAnchorOnLoad() {{
+            const hash = window.location.hash.substring(1); // Remove the #
+            if (hash) {{
+                const targetCard = document.getElementById(hash);
+                if (targetCard) {{
+                    // Clear all filters first
+                    clearAllFilters();
+                    
+                    // Show only the targeted font
+                    const allCards = document.querySelectorAll('.font-card');
+                    allCards.forEach(card => {{
+                        if (card.id === hash) {{
+                            card.classList.remove('hidden');
+                        }} else {{
+                            card.classList.add('hidden');
+                        }}
+                    }});
+                    
+                    // Update results info
+                    document.getElementById('resultsInfo').textContent = 'Showing 1 font (filtered by link)';
+                    
+                    // Add a "Show All" button
+                    let showAllBtn = document.getElementById('showAllBtn');
+                    if (!showAllBtn) {{
+                        showAllBtn = document.createElement('button');
+                        showAllBtn.id = 'showAllBtn';
+                        showAllBtn.textContent = 'Show All Fonts';
+                        showAllBtn.className = 'clear-filters';
+                        showAllBtn.style.marginLeft = '10px';
+                        showAllBtn.onclick = () => {{
+                            clearAllFilters();
+                            showAllBtn.remove();
+                            window.history.replaceState(null, null, window.location.pathname);
+                        }};
+                        document.getElementById('resultsInfo').appendChild(showAllBtn);
+                    }}
+                    
+                    // Scroll to the font smoothly
+                    targetCard.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
+                }}
+            }}
+        }}
+        
         // Event listeners
         document.getElementById('searchText').addEventListener('input', function() {{
             // Reset other filters when user starts typing
@@ -511,8 +595,11 @@ def generate_html_catalogue(fonts, output_file="font_catalogue.html", github_rep
         document.getElementById('boldFilter').addEventListener('change', applyFilters);
         document.getElementById('italicFilter').addEventListener('change', applyFilters);
         
-        // Initialize filters on page load
-        document.addEventListener('DOMContentLoaded', applyFilters);
+        // Initialize filters and handle anchors on page load
+        document.addEventListener('DOMContentLoaded', function() {{
+            applyFilters();
+            handleAnchorOnLoad();
+        }});
     </script>
 </body>
 </html>"""
