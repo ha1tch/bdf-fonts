@@ -204,6 +204,50 @@ def generate_html_catalogue(fonts, output_file="font_catalogue.html"):
             border-bottom: 3px solid #007acc;
             padding-bottom: 10px;
         }}
+        .filters {{
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid #ddd;
+        }}
+        .filter-row {{
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }}
+        .filter-group {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }}
+        .filter-group label {{
+            font-weight: bold;
+            color: #333;
+        }}
+        .filter-group input, .filter-group select {{
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }}
+        .clear-filters {{
+            background-color: #007acc;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }}
+        .clear-filters:hover {{
+            background-color: #005c99;
+        }}
+        .results-info {{
+            margin: 10px 0;
+            font-weight: bold;
+            color: #666;
+        }}
         .font-grid {{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
@@ -215,6 +259,9 @@ def generate_html_catalogue(fonts, output_file="font_catalogue.html"):
             border-radius: 8px;
             padding: 20px;
             background-color: #fafafa;
+        }}
+        .font-card.hidden {{
+            display: none;
         }}
         .font-name {{
             font-size: 1.4em;
@@ -282,15 +329,55 @@ def generate_html_catalogue(fonts, output_file="font_catalogue.html"):
         <h1>BDF Font Catalogue</h1>
         <p>A collection of {len(fonts)} bitmap fonts in BDF format.</p>
         
-        <div class="font-grid">
+        <div class="filters">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label for="searchText">Search:</label>
+                    <input type="text" id="searchText" placeholder="Search font names..." style="min-width: 200px;">
+                </div>
+                <div class="filter-group">
+                    <label for="spacingFilter">Spacing:</label>
+                    <select id="spacingFilter">
+                        <option value="">All</option>
+                        <option value="Monospace">Monospace</option>
+                        <option value="Proportional">Proportional</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="boldFilter">
+                    <label for="boldFilter">Bold fonts only</label>
+                </div>
+                <div class="filter-group">
+                    <input type="checkbox" id="italicFilter">
+                    <label for="italicFilter">Italic fonts only</label>
+                </div>
+                <button class="clear-filters" onclick="clearAllFilters()">Clear Filters</button>
+            </div>
+        </div>
+        
+        <div class="results-info" id="resultsInfo">
+            Showing {len(fonts)} fonts
+        </div>
+        
+        <div class="font-grid" id="fontGrid">
 """
     
     for font in fonts:
         preview_image = f"previews/{font.filename}.png"
         preview_exists = os.path.exists(preview_image)
         
+        spacing_type = font.get_spacing_type()
+        weight_style = font.get_weight_style()
+        is_bold = "Bold" in weight_style
+        is_italic = "Italic" in weight_style or "Oblique" in weight_style
+        
         html_content += f"""
-            <div class="font-card">
+            <div class="font-card" 
+                 data-filename="{font.filename.lower()}" 
+                 data-fontname="{font.get_display_name().lower()}" 
+                 data-spacing="{spacing_type}" 
+                 data-bold="{str(is_bold).lower()}" 
+                 data-italic="{str(is_italic).lower()}">
                 <div class="font-name">{font.filename.replace('.bdf', '')}</div>
                 <div class="font-descriptor">{font.metadata.get('font_name', 'No descriptor available')}</div>
                 
@@ -333,13 +420,95 @@ def generate_html_catalogue(fonts, output_file="font_catalogue.html"):
             Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
         </div>
     </div>
+
+    <script>
+        // Filter functionality
+        function applyFilters() {{
+            const searchText = document.getElementById('searchText').value.toLowerCase();
+            const spacingFilter = document.getElementById('spacingFilter').value;
+            const boldFilter = document.getElementById('boldFilter').checked;
+            const italicFilter = document.getElementById('italicFilter').checked;
+            
+            const fontCards = document.querySelectorAll('.font-card');
+            let visibleCount = 0;
+            
+            fontCards.forEach(card => {{
+                let visible = true;
+                
+                // Text search filter
+                if (searchText) {{
+                    const filename = card.getAttribute('data-filename');
+                    const fontname = card.getAttribute('data-fontname');
+                    if (!filename.includes(searchText) && !fontname.includes(searchText)) {{
+                        visible = false;
+                    }}
+                }}
+                
+                // Spacing filter
+                if (spacingFilter && card.getAttribute('data-spacing') !== spacingFilter) {{
+                    visible = false;
+                }}
+                
+                // Bold filter
+                if (boldFilter && card.getAttribute('data-bold') !== 'true') {{
+                    visible = false;
+                }}
+                
+                // Italic filter
+                if (italicFilter && card.getAttribute('data-italic') !== 'true') {{
+                    visible = false;
+                }}
+                
+                if (visible) {{
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                }} else {{
+                    card.classList.add('hidden');
+                }}
+            }});
+            
+            // Update results info
+            const resultsInfo = document.getElementById('resultsInfo');
+            const totalCount = fontCards.length;
+            if (visibleCount === totalCount) {{
+                resultsInfo.textContent = `Showing all ${{totalCount}} fonts`;
+            }} else {{
+                resultsInfo.textContent = `Showing ${{visibleCount}} of ${{totalCount}} fonts`;
+            }}
+        }}
+        
+        function clearAllFilters() {{
+            document.getElementById('searchText').value = '';
+            document.getElementById('spacingFilter').value = '';
+            document.getElementById('boldFilter').checked = false;
+            document.getElementById('italicFilter').checked = false;
+            applyFilters();
+        }}
+        
+        // Event listeners
+        document.getElementById('searchText').addEventListener('input', function() {{
+            // Reset other filters when user starts typing
+            if (this.value.length > 0) {{
+                document.getElementById('spacingFilter').value = '';
+                document.getElementById('boldFilter').checked = false;
+                document.getElementById('italicFilter').checked = false;
+            }}
+            applyFilters();
+        }});
+        document.getElementById('spacingFilter').addEventListener('change', applyFilters);
+        document.getElementById('boldFilter').addEventListener('change', applyFilters);
+        document.getElementById('italicFilter').addEventListener('change', applyFilters);
+        
+        // Initialize filters on page load
+        document.addEventListener('DOMContentLoaded', applyFilters);
+    </script>
 </body>
 </html>"""
     
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_content)
     
-    print(f"HTML catalogue saved to {output_file}")
+    print(f"HTML catalogue saved to {{output_file}}")
 
 def generate_markdown_catalogue(fonts, output_file="font_catalogue.md"):
     """Generate Markdown catalogue of all fonts"""
