@@ -1,6 +1,6 @@
 # BDF Font Catalogue
 
-A collection of 56 bitmap fonts in BDF format.
+A collection of 57 bitmap fonts in BDF format.
 
 ---
 
@@ -126,6 +126,27 @@ A collection of 56 bitmap fonts in BDF format.
 | Spacing | Monospace |
 | Weight/Style | Medium |
 | Copyright | Public domain terminal emulator font.  Share and enjoy. |
+| Character Set | ISO10646-1 |
+
+---
+
+## 6x13-slashzero-curvedl
+
+*-Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-ISO10646-1*
+
+*Preview not available*
+
+**Download:** [6x13-slashzero-curvedl.bdf](6x13-slashzero-curvedl.bdf)
+
+| Property | Value |
+|----------|-------|
+| Filename | `6x13-slashzero-curvedl.bdf` |
+| File Size | 432.2 KB |
+| Characters | 4111 |
+| Size | 13px / 12pt / 6x13 |
+| Spacing | Monospace |
+| Weight/Style | Medium |
+| Copyright | Public domain font.  Share and enjoy. |
 | Character Set | ISO10646-1 |
 
 ---
@@ -1166,4 +1187,4 @@ A collection of 56 bitmap fonts in BDF format.
 ---
 
 
-*Generated on 2025-08-26 00:59:36*
+*Generated on 2025-10-20 14:04:22*
